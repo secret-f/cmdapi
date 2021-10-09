@@ -10,7 +10,7 @@ class DymanicArgnum():
         self.most = t[1]
     
     def isable(self, n):
-        return least<=n and n<=most
+        return self.least<=n and n<=self.most
 
 class Cmd():
 
@@ -32,7 +32,7 @@ class Cmd():
             return
         if self.cmd.get((func:=args[0])) is None:
             return CMD_NOT_FOUND
-        if len(args)!=self.argnum[func]+1:
+        if len(args)-1!=self.argnum[func]:
                 if not self.argnum[func].isable(len(args)):
                     return CMD_ARG_ERROR
         if self.verify:
